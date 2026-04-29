@@ -1,36 +1,22 @@
-# ☕ Warung Pak Tani — Website Resmi
+# 📦 Industrial Stock System
 
-![Status](https://img.shields.io/badge/status-live-brightgreen)
-![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-blue)
-![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![PySide6](https://img.shields.io/badge/PySide6-41CD52?logo=qt&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![Status](https://img.shields.io/badge/status-active-brightgreen)
 
-> **Kopi Asli, Rasa Tradisi.** — Website profil untuk Warung Pak Tani, warung kopi legendaris sejak 1978.
-
-🌐 **Live Demo:** [https://fad-j.github.io/WarungPakTani](https://fad-j.github.io/WarungPakTani)
-
----
-
-## 📸 Preview
-
-![Hero Section](hero-bg.jpg)
+> Aplikasi desktop manajemen stok industri dengan fitur login, QR Code scanner, dan manajemen pengguna — dibangun menggunakan Python & PySide6.
 
 ---
 
 ## ✨ Fitur
 
-- 🎬 **Loading Screen** — Animasi pembuka saat halaman pertama dimuat
-- 🎞️ **Hero Video Background** — Video navbar atas yang imersif
-- 📜 **Menu Interaktif** — Daftar minuman & makanan dengan hover image reveal
-- 🕰️ **Timeline Perjalanan** — Galeri foto 3 era: Awal Mula, Langkah Baru, Wajah Sekarang
-- 🖼️ **Lightbox Gallery** — Klik foto untuk tampilan full dengan navigasi keyboard
-- 📍 **Integrasi Google Maps** — Link langsung ke lokasi warung
-- 🌙 **Adaptive Navbar** — Otomatis dark mode saat melewati section tertentu
-- 🔢 **Counter Stats Animasi** — Angka statistik yang muncul saat di-scroll
-- 🖱️ **Custom Cursor** — Kursor khusus untuk pengalaman yang unik (desktop only)
-- 📱 **Responsive Design** — Tampil optimal di desktop maupun mobile
-- ⬆️ **Back to Top Button** — Navigasi cepat kembali ke atas halaman
+- 🔐 **Autentikasi** — Login dengan enkripsi password menggunakan `bcrypt`
+- 📊 **Dashboard Stok** — Lihat, tambah, edit, dan hapus data barang
+- 📷 **Scan QR Code** — Identifikasi barang via webcam menggunakan `pyzbar` & `OpenCV`
+- 👤 **Manajemen User** — Kelola akun pengguna dengan role (admin/user)
+- 🖨️ **Generate QR Code** — Buat QR Code otomatis untuk setiap barang
+- 🎨 **UI Modern** — Tampilan antarmuka dengan custom styling PySide6
 
 ---
 
@@ -38,78 +24,119 @@
 
 | Teknologi | Kegunaan |
 |---|---|
-| HTML5 | Struktur halaman |
-| CSS3 | Styling & layout |
-| JavaScript (Vanilla) | Interaktivitas |
-| [GSAP](https://greensock.com/gsap/) | Animasi scroll & transisi |
-| [ScrollTrigger](https://greensock.com/scrolltrigger/) | Trigger animasi berbasis scroll |
-| GitHub Pages | Hosting gratis & deployment |
+| Python 3 | Bahasa pemrograman utama |
+| PySide6 | Framework GUI desktop |
+| PyMySQL | Koneksi ke database MySQL/MariaDB |
+| OpenCV (`opencv-python`) | Akses webcam untuk scan barcode |
+| pyzbar | Decode QR Code / Barcode |
+| qrcode[pil] | Generate gambar QR Code |
+| bcrypt | Enkripsi & verifikasi password |
+| numpy | Pemrosesan array gambar |
+| colorama | Warna output terminal |
 
 ---
 
-## 📁 Struktur File
+## 📁 Struktur Project
 
 ```
-WarungPakTani/
-├── index.html              # Halaman utama
-├── style.css               # Seluruh styling
-├── script.js               # Logika & animasi JavaScript
-├── logo.png                # Logo Warung Pak Tani
-├── logo-placeholder.png    # Placeholder logo
-├── hero-bg.jpg             # Background hero section
-├── menu-bg.jpg             # Background section menu
-├── story-img.jpg           # Foto cerita/story section
-├── story-img.jpg           # Gambar story section
-├── video-atas-navbar.mp4   # Video hero background
-├── font/                   # Custom font lokal
-├── foto video/             # Aset foto & video tambahan
-└── img/
-    └── story/
-        ├── era1/           # Foto era awal (1978-an)
-        ├── era2/           # Foto era berkembang
-        └── era3/           # Foto kondisi sekarang
+python/
+├── main.py                  # Entry point utama aplikasi
+├── db.py                    # Konfigurasi & koneksi database
+├── auth.py                  # Logika autentikasi login
+├── models.py                # Model data & query database
+├── styles.py                # Styling UI aplikasi
+├── assets/
+│   ├── bg_login.jpg         # Background halaman login
+│   └── bg_dashboard.jpg     # Background dashboard
+├── widgets/
+│   ├── login_widget.py      # Halaman login
+│   ├── index_widget.py      # Dashboard utama / daftar stok
+│   ├── add_item_widget.py   # Form tambah barang
+│   ├── edit_item_widget.py  # Form edit barang
+│   ├── view_item_widget.py  # Detail barang
+│   ├── scan_widget.py       # Scanner QR Code via webcam
+│   └── user_widget.py       # Manajemen pengguna
+├── utils/
+│   └── passwords.py         # Helper enkripsi password
+└── sql/
+    └── industrial_stock.sql # File SQL untuk setup database
 ```
 
 ---
 
-## 🚀 Cara Menjalankan Lokal
+## 🚀 Cara Menjalankan
 
-Karena ini website statis, cukup:
+### 1. Install Dependencies
 
-1. **Clone repository ini:**
-   ```bash
-   git clone https://github.com/Fad-J/WarungPakTani.git
-   ```
+Buka terminal di VS Code, lalu jalankan:
 
-2. **Masuk ke folder project:**
-   ```bash
-   cd WarungPakTani
-   ```
+```bash
+pip install PySide6 opencv-python PyMySQL qrcode[pil] bcrypt pyzbar numpy colorama
+```
 
-3. **Buka `index.html`** langsung di browser, atau gunakan Live Server (VS Code):
-   ```
-   Klik kanan index.html → Open with Live Server
-   ```
-
-> ⚠️ Disarankan pakai Live Server agar video & font lokal bisa termuat dengan benar.
+> ⚠️ Pastikan koneksi internet stabil saat proses instalasi.
 
 ---
 
-## 📍 Informasi Warung
+### 2. Setup Database
 
-| Info | Detail |
-|---|---|
-| 📅 Berdiri | 1978 |
-| ⏰ Jam Buka | Setiap Hari: 07.00 – 23.00 WIB |
-| ⏰ Khusus Kamis | 07.00 – 17.30 WIB |
-| 🗺️ Lokasi | [Lihat di Google Maps](https://www.google.com/maps/place/Warung+Pak+Tani+-+Kampung+Kenanga/@-0.2081431,104.6004916,15z) |
+1. Buka **phpMyAdmin** (via XAMPP atau sejenisnya)
+2. Buat database baru bernama `industrial_stock`
+3. Import file SQL: `sql/industrial_stock.sql`
+
+---
+
+### 3. Konfigurasi Koneksi Database
+
+Buka file `db.py` dan sesuaikan konfigurasi jika diperlukan:
+
+```python
+DB_HOST = "localhost"
+DB_USER = "root"
+DB_PASS = ""           # Sesuaikan dengan password MySQL kamu
+DB_NAME = "industrial_stock"
+DB_PORT = 3306
+```
+
+---
+
+### 4. Buat & Aktifkan Virtual Environment
+
+```bash
+# Buat virtual environment
+python -m venv env
+
+# Aktifkan (Windows PowerShell)
+.\env\Scripts\Activate.ps1
+
+# Aktifkan (Windows CMD)
+env\Scripts\activate.bat
+
+# Aktifkan (Mac/Linux)
+source env/bin/activate
+```
+
+> ✅ Berhasil jika muncul tulisan `(env)` di sebelah kiri terminal.
+
+---
+
+### 5. Jalankan Aplikasi
+
+```bash
+python main.py
+```
+
+---
+
+## ⚠️ Catatan Penting
+
+- Pastikan **XAMPP / MySQL** aktif sebelum menjalankan program
+- Pastikan **webcam** aktif dan tidak dipakai aplikasi lain untuk fitur Scan QR Code
+- Gunakan **Python 3.10+** untuk kompatibilitas terbaik dengan PySide6
+- File `db.py` berisi konfigurasi database lokal — **jangan di-push ke repo publik** jika password tidak kosong
 
 ---
 
 ## 👨‍💻 Developer
 
-Dibuat dengan ☕ oleh **[Fad-J](https://github.com/Fad-J)**
-
----
-
-© 2024 Warung Pak Tani. Sejak 1978. Semua hak dilindungi.
+Dibuat oleh **[Fad-J](https://github.com/Fad-J)**
