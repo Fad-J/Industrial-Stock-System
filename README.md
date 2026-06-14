@@ -139,4 +139,4 @@ python main.py
 
 ## 👨‍💻 Developer
 
-Dibuat oleh **[Fad-J](https://github.com/Fad-J)**
+Dibuat oleh **[Fad-J](https://github.com/Fad-J)** dan tim
